@@ -1,0 +1,30 @@
+<!-- Launches: path_tracker_process -->
+<launch>
+	
+	<arg name="robot_namespace"  default="drone1" />
+	<arg name="robot_config_path" 	default="$(env AEROSTACK_STACK)/configs/$(arg robot_namespace)" />
+	<arg name="frequency"   default="30.0" />
+
+	<arg name="config_file" 	default="path_tracker.yaml" />
+	
+	<arg name="self_localization_pose_topic_name" 	default="self_localization/pose" />
+	<arg name="motion_reference_path_topic_name" 	default="motion_reference/path" />
+	<arg name="motion_reference_speed_topic_name" 	default="motion_reference/speed" />
+	<arg name="motion_reference_pose_topic_name" 	default="motion_reference/pose" />
+	<arg name="motion_reference_remaining_path_topic_name" 	default="motion_reference/remaining_path" />
+	
+	<group ns="$(arg robot_namespace)">
+		<node name="path_tracker_process" pkg="path_tracker_process" type="path_tracker_process_main" output="screen" >
+			<param name="robot_namespace"  value="$(arg robot_namespace)" type="string"/>		
+			<param name="robot_config_path" value="$(arg robot_config_path)" type="string"/>
+			<param name="frequency"   value="$(arg frequency)" type="double" />
+		<param name="config_file" value="$(arg config_file)" type="string"/>
+
+		<param name="self_localization_pose_topic_name" value="$(arg self_localization_pose_topic_name)" type="string"/>
+		<param name="motion_reference_path_topic_name" value="$(arg motion_reference_path_topic_name)" type="string"/>
+		<param name="motion_reference_speed_topic_name" value="$(arg motion_reference_speed_topic_name)" type="string"/>
+		<param name="motion_reference_pose_topic_name" value="$(arg motion_reference_pose_topic_name)" type="string"/>
+		<param name="motion_reference_remaining_path_topic_name" value="$(arg motion_reference_remaining_path_topic_name)" type="string"/>		
+		</node>
+	</group>
+</launch>

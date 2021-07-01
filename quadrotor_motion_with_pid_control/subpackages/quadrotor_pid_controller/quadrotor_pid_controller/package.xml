@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>quadrotor_pid_controller</name>
+  <version>1.0.0</version>
+  <description>The quadrotor_pid_controller package</description>
+
+  <author email="psantofimia@gmail.com">Pablo Santofimia Ruiz</author>
+  <author email="rodelgo7al@gmail.com">Alberto Rodelgo Perales</author>
+  <maintainer email="rodelgo7al@gmail.com">Alberto Rodelgo Perales</maintainer>
+
+  <license>BSD-3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>yaml-cpp</build_depend>
+  <build_depend>aerostack_msgs</build_depend>
+  <build_depend>pugixml</build_depend>
+  <build_depend>lib_cvgutils</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>yaml-cpp</run_depend>
+  <run_depend>aerostack_msgs</run_depend>
+  <run_depend>pugixml</run_depend>
+  <run_depend>lib_cvgutils</run_depend>
+
+  <export>
+  </export>
+
+</package>

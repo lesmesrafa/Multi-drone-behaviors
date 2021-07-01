@@ -1,0 +1,26 @@
+<package>
+	<name>quadrotor_pid_controller_process</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is quadrotor_pid_controller_process.
+	</description>
+	<author email="rodelgo7al@gmail.com">Alberto Rodelgo Perales</author>
+	<maintainer email="rodelgo7al@gmail.com">Alberto Rodelgo Perales</maintainer>
+  	<license>BSD-3</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+
+	<build_depend>roscpp</build_depend>
+	<build_depend>robot_process</build_depend>
+	<build_depend>quadrotor_pid_controller</build_depend>
+	<build_depend>geometry_msgs</build_depend>
+
+    <run_depend>geometry_msgs</run_depend>
+	<run_depend>roscpp</run_depend>
+	<run_depend>robot_process</run_depend>
+	<run_depend>quadrotor_pid_controller</run_depend>
+
+
+</package>
+
+

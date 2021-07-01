@@ -1,0 +1,48 @@
+<!-- Launches: quadrotor_pid_controller_process -->
+<launch>
+	<arg name="robot_namespace"  default="drone1" />
+	<arg name="robot_config_path" 	default="$(env AEROSTACK_STACK)/configs/$(arg robot_namespace)" />
+	<arg name="frequency"   default="100.0" />
+	<arg name="init_control_mode"   default="pose" />
+
+	<arg name="yaml_config_file" 	default="quadrotor_pid_controller_config.yaml" />
+	
+	<arg name="set_control_mode_service_name" 	default="set_control_mode" />
+
+	<arg name="self_localization_pose_topic_name" 	default="self_localization/pose" />
+	<arg name="self_localization_speed_topic_name" 	default="self_localization/speed" />
+	<arg name="motion_reference_pose_topic_name" 	default="motion_reference/pose" />
+	<arg name="motion_reference_ground_speed_topic_name" 	default="motion_reference/speed" />
+	<arg name="motion_reference_trajectory_topic_name" 	default="motion_reference/trajectory" />
+	<arg name="actuator_command_roll_pitch_topic_name" 	default="actuator_command/roll_pitch" />
+	<arg name="actuator_command_altitude_yaw_topic_name" 	default="actuator_command/altitude_rate_yaw_rate" />
+	<arg name="motion_reference_assumed_control_mode_topic_name" 	default="motion_reference/assumed_control_mode" />
+	<arg name="motion_reference_assumed_ground_speed" 	default="motion_reference/assumed_speed" />
+	<arg name="motion_reference_assumed_pose_topic_name" 	default="motion_reference/assumed_pose" />
+
+	<group ns="$(arg robot_namespace)">
+		<!-- Trajectory Controller - Drone Swarm Architecture -->
+		<node name="quadrotor_pid_controller_process" pkg="quadrotor_pid_controller_process" type="quadrotor_pid_controller_process_main" output="screen">
+		<param name="robot_namespace" value="$(arg robot_namespace)" type="string"/>
+		<param name="robot_config_path" value="$(arg robot_config_path)" type="string"/>
+		<param name="frequency"   value="$(arg frequency)" type="double" />
+		<param name="init_control_mode"  value="$(arg init_control_mode)" type="string" />
+
+		<param name="yaml_config_file" value="$(arg yaml_config_file)" type="string"/>
+
+		<param name="self_localization_pose_topic_name" value="$(arg self_localization_pose_topic_name)" type="string"/>
+		<param name="self_localization_speed_topic_name" value="$(arg self_localization_speed_topic_name)" type="string"/>
+		<param name="motion_reference_pose_topic_name" value="$(arg motion_reference_pose_topic_name)" type="string"/>
+		<param name="motion_reference_ground_speed_topic_name" value="$(arg motion_reference_ground_speed_topic_name)" type="string"/>
+		<param name="motion_reference_trajectory_topic_name" value="$(arg motion_reference_trajectory_topic_name)" type="string"/>
+		<param name="actuator_command_roll_pitch_topic_name" value="$(arg actuator_command_roll_pitch_topic_name)" type="string"/>
+		<param name="actuator_command_altitude_yaw_topic_name" value="$(arg actuator_command_altitude_yaw_topic_name)" type="string"/>
+		<param name="motion_reference_assumed_control_mode_topic_name" value="$(arg motion_reference_assumed_control_mode_topic_name)" type="string"/>
+		<param name="motion_reference_assumed_ground_speed" value="$(arg motion_reference_assumed_ground_speed)" type="string"/>
+		<param name="motion_reference_assumed_pose_topic_name" value="$(arg motion_reference_assumed_pose_topic_name)" type="string"/>
+
+      <param name="set_control_mode_service_name" value="$(arg set_control_mode_service_name)" type="string"/>
+
+		</node>
+	</group>
+</launch>

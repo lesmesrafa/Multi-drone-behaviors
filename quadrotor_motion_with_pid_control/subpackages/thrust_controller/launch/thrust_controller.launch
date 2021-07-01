@@ -1,0 +1,27 @@
+<launch>
+    
+    <arg name= "uav_mass"                           default = "1.5"/>
+    <arg name= "namespace"	                        default = "drone1"/>
+	<arg name="robot_config_path" 	                default="$(env AEROSTACK_STACK)/configs/$(arg namespace)"/>
+    <arg name= "estimated_speed_topic"	            default = "self_localization/speed"/>
+    <arg name= "estimated_pose_topic" 	            default = "self_localization/pose"/>
+    <arg name= "altitude_rate_yaw_rate_topic"	    default = "actuator_command/altitude_rate_yaw_rate"/>
+    <arg name= "thrust_topic"					    default = "actuator_command/thrust"/> 
+    <arg name= "flight_action_topic"    			default = "actuator_command/flight_action"/> 
+    <arg name= "yaml_config_file" 	                default = "quadrotor_pid_controller_config.yaml"/>
+
+    <group ns="$(arg namespace)">
+        <node name="thrust_controller" pkg="thrust_controller" type="thrust_controller_node" output="screen">
+            <param name="~uav_mass"                         value="$(arg uav_mass)"                         type="double"/>
+            <param name="~namespace"                        value="$(arg namespace)"                        type="string" />
+            <param name="~estimated_pose_topic"             value="$(arg estimated_pose_topic)"             type="string" />
+            <param name="~estimated_speed_topic"            value="$(arg estimated_speed_topic)"            type="string" />
+            <param name="~altitude_rate_yaw_rate_topic"     value="$(arg altitude_rate_yaw_rate_topic)"     type="string" />
+            <param name="~thrust_topic"                     value="$(arg thrust_topic)"                     type="string" />
+            <param name="~flight_action_topic"              value="$(arg flight_action_topic)"              type="string" />
+            <param name="robot_config_path"                 value="$(arg robot_config_path)"                type="string"/>
+            <param name="yaml_config_file"                  value="$(arg yaml_config_file)"                 type="string"/>
+		</node>
+    </group>
+</launch>
+
